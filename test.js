@@ -5,10 +5,11 @@ async function loop() {
     let test = getTable(8);
     for(i = 0; i < test.length; i++){
         show(test[i]);
-        await sleep(2000);
+        await sleep(200);
         hide();
-        await sleep(6000);
+        await sleep(600);
     }
+    success();
 }
 
 function getTable(n) {
@@ -49,8 +50,8 @@ function show(i) {
 }
 
 function hide() {
-    const i = document.getElementById("img");
-    i.style.visibility = 'hidden';
+    const img = document.getElementById("img");
+    img.style.visibility = 'hidden';
 }
 
 function sleep(ms) {
@@ -61,4 +62,9 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  function success() {
+    const img = document.getElementById("success");
+    img.style.visibility = 'visible';
   }
