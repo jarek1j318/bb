@@ -2,7 +2,6 @@ console.log('test works');
 console.log('OK-EKS');
 
 function loop() {
-    console.log('loop works');
     let c = confirm('przywrócić domyślne podstawy ?');
     console.log(`c = ${c}`);
     // set('20px', '20px');
