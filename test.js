@@ -1,17 +1,64 @@
 console.log('test works');
 console.log('OK-EKS');
 
-function loop() {
-    let c = confirm('przywrócić domyślne podstawy ?');
-    console.log(`c = ${c}`);
-    // set('20px', '20px');
-    // set('20px', '800px');
-    // set('600px', '20px');
-    set('600px', '800px');
+async function loop() {
+    let test = getTable(8);
+    for(i = 0; i < test.length; i++){
+        show(test[i]);
+        await sleep(2000);
+        hide();
+        await sleep(6000);
+    }
 }
 
-function set(top, left) {
-    i = document.getElementById("img");
-    i.style.top=top;
-    i.style.left=left;
+function getTable(n) {
+
+    let t = [];
+    for( i = 0; i < n; i++){
+        let a = getRandomInt(1, 5);
+        t.push(a);
+    }
+
+    console.log(t);
+    // let t = [1, 3, 2, 4, 4, 1, 3];
+    return t;
 }
+
+function show(i) {
+    console.log(i);
+
+    let top = '';
+    let left = '';
+    if(i === 1){
+        top='20px';
+        left='20px';
+    } else if (i === 2) {
+        top='20px';
+        left='800px';
+    } else if (i === 3) {
+        top='600px';
+        left='800px';
+    } else if (i === 4) {
+        top='600px';
+        left='20px';
+    }
+    const img = document.getElementById("img");
+    img.style.visibility = 'visible';
+    img.style.top = top;
+    img.style.left = left;
+}
+
+function hide() {
+    const i = document.getElementById("img");
+    i.style.visibility = 'hidden';
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
